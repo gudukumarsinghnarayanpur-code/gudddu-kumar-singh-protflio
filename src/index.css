@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+
+  body {
+    @apply bg-ink-950 text-white/90 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(22, 119, 255, 0.18), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 20%, rgba(22, 119, 255, 0.08), transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-electric-600/40 text-white;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-700 rounded-full border-2 border-ink-950;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-electric-600/60;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .glass-hover {
+    @apply transition-all duration-500 hover:bg-white/[0.07] hover:border-electric-600/40;
+  }
+
+  .btn-glow {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-electric-600 px-7 py-3 font-semibold text-white transition-all duration-300;
+    box-shadow: 0 0 25px rgba(22, 119, 255, 0.45);
+  }
+  .btn-glow:hover {
+    @apply bg-electric-500 -translate-y-0.5;
+    box-shadow: 0 0 45px rgba(22, 119, 255, 0.65);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3 font-semibold text-white/90 transition-all duration-300 hover:border-electric-600/50 hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-electric-600/30 bg-electric-600/10 px-4 py-1.5 text-sm font-medium text-electric-300;
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black, transparent 75%);
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-electric-200 to-electric-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-blue {
+    @apply bg-gradient-to-r from-electric-400 to-electric-600 bg-clip-text text-transparent;
+  }
+}
