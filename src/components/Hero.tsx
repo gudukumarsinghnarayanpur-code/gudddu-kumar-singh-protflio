@@ -17,7 +17,7 @@ export default function Hero() {
         {/* Left — copy */}
         <div className="reveal text-center lg:text-left">
           <span className="section-eyebrow mx-auto lg:mx-0">
-            <Sparkles size={14} /> Digital Marketing Learner
+            <Sparkles size={14} /> Digital Marketing Expert
           </span>
 
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">

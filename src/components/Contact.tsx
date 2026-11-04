@@ -3,8 +3,8 @@ import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-rea
 
 type Status = 'idle' | 'success' | 'error';
 
-const EMAIL = 'pramod.kumar.singh@example.com'; // replace with your email
-const WHATSAPP = '+91 00000 00000'; // replace with your WhatsApp
+const EMAIL = 'gudddukumarsingh62@gmail.com';
+const WHATSAPP = '+91 7061837526';
 const LINKEDIN = 'https://www.linkedin.com/in/pramod-kumar-singh'; // replace with your LinkedIn
 
 export default function Contact() {
@@ -116,10 +116,6 @@ export default function Contact() {
               </span>
             </a>
 
-            <div className="glass rounded-2xl p-5 text-sm text-white/50">
-              Note: Replace the email, WhatsApp and LinkedIn links at the top of the Contact
-              section with your real details before sharing the site.
-            </div>
           </div>
 
           {/* Form */}
