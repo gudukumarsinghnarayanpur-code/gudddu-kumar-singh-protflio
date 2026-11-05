@@ -10,7 +10,7 @@ export default function About() {
             <div className="absolute -inset-5 -z-10 rounded-[2rem] bg-electric-600/20 blur-2xl" />
             <div className="relative h-[440px] w-[340px] overflow-hidden rounded-[2rem] border border-white/10 bg-ink-850 sm:h-[520px] sm:w-[400px]">
               <img
-                src="/images/profile.jpg"
+                src="/images/profile.png"
                 alt="Pramod Kumar Singh — About"
                 className="h-full w-full object-cover"
                 onError={(e) => {
@@ -38,14 +38,14 @@ export default function About() {
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/70">
             I'm Pramod Kumar Singh, a digital marketing learner focused on performance
-            marketing. I enjoy breaking down how ads reach people, what makes them click,
-            and how every rupee of ad spend translates into measurable results.
+            marketing and web development. I enjoy understanding how people discover
+            businesses online and creating useful digital experiences around their needs.
           </p>
           <p className="mt-4 leading-relaxed text-white/60">
-            With a background in B.Sc Physics, I bring an analytical mindset to marketing —
+            Based in Patna, Bihar, I bring an analytical mindset from my B.Sc. in Physics —
             treating campaigns like experiments, testing hypotheses, reading the data, and
-            improving from there. I'm currently building hands-on skills in Google Ads, Meta
-            Ads, and GA4.
+            improving from there. I'm building practical skills in Google Ads, Meta Ads,
+            GA4, HTML, CSS, and JavaScript.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">

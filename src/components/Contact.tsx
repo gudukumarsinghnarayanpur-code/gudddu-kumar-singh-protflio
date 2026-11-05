@@ -1,14 +1,24 @@
 import { useState, type FormEvent } from 'react';
-import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import {
+  AlertCircle,
+  CheckCircle2,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send,
+} from 'lucide-react';
 
 type Status = 'idle' | 'success' | 'error';
 
 const EMAIL = 'gudddukumarsingh62@gmail.com';
-const WHATSAPP = '+91 7061837526';
-const LINKEDIN = 'https://www.linkedin.com/in/pramod-kumar-singh'; // replace with your LinkedIn
+const PHONE = '7061837526';
+const PHONE_LINK = '+917061837526';
+const WHATSAPP = 'https://wa.me/917061837526';
+const LOCATION = 'Patna, Bihar, India';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState<Status>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -19,6 +29,11 @@ export default function Contact() {
       e.email = 'Please enter your email.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       e.email = 'Please enter a valid email address.';
+    }
+    if (!form.phone.trim()) {
+      e.phone = 'Please enter your mobile number.';
+    } else if (!/^\+?[\d\s()-]{10,16}$/.test(form.phone.trim())) {
+      e.phone = 'Please enter a valid mobile number.';
     }
     if (!form.message.trim()) {
       e.message = 'Please enter a message.';
@@ -35,11 +50,13 @@ export default function Contact() {
       setStatus('error');
       return;
     }
-    // No backend is wired here yet. This simulates a successful submission.
-    // Connect to a form service (e.g. Formspree) or an edge function to make it live.
+
+    const subject = encodeURIComponent(`Portfolio enquiry from ${form.name.trim()}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name.trim()}\nEmail: ${form.email.trim()}\nMobile: ${form.phone.trim()}\n\n${form.message.trim()}`,
+    );
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
     setStatus('success');
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setStatus('idle'), 5000);
   };
 
   const fieldClass = (field: string) =>
@@ -66,6 +83,21 @@ export default function Contact() {
           {/* Contact info */}
           <div className="reveal space-y-4">
             <a
+              href={`tel:${PHONE_LINK}`}
+              className="glass glass-hover group flex items-center gap-4 rounded-2xl p-5"
+            >
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-electric-600/15 text-electric-400">
+                <Phone size={22} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-xs uppercase tracking-wide text-white/40">Mobile</span>
+                <span className="block truncate text-sm font-semibold text-white group-hover:text-electric-300">
+                  {PHONE}
+                </span>
+              </span>
+            </a>
+
+            <a
               href={`mailto:${EMAIL}`}
               className="glass glass-hover group flex items-center gap-4 rounded-2xl p-5"
             >
@@ -81,7 +113,7 @@ export default function Contact() {
             </a>
 
             <a
-              href={`https://wa.me/${WHATSAPP.replace(/[^0-9]/g, '')}`}
+              href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
               className="glass glass-hover group flex items-center gap-4 rounded-2xl p-5"
@@ -92,29 +124,22 @@ export default function Contact() {
               <span className="min-w-0">
                 <span className="block text-xs uppercase tracking-wide text-white/40">WhatsApp</span>
                 <span className="block truncate text-sm font-semibold text-white group-hover:text-electric-300">
-                  {WHATSAPP}
+                  Chat on WhatsApp
                 </span>
               </span>
             </a>
 
-            <a
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass glass-hover group flex items-center gap-4 rounded-2xl p-5"
-            >
+            <div className="glass flex items-center gap-4 rounded-2xl p-5">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-electric-600/15 text-electric-400">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
-                </svg>
+                <MapPin size={22} />
               </span>
               <span className="min-w-0">
-                <span className="block text-xs uppercase tracking-wide text-white/40">LinkedIn</span>
-                <span className="block truncate text-sm font-semibold text-white group-hover:text-electric-300">
-                  pramod-kumar-singh
+                <span className="block text-xs uppercase tracking-wide text-white/40">Location</span>
+                <span className="block truncate text-sm font-semibold text-white">
+                  {LOCATION}
                 </span>
               </span>
-            </a>
+            </div>
 
           </div>
 
@@ -165,6 +190,28 @@ export default function Contact() {
               </div>
 
               <div>
+                <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/80">
+                  Mobile Number
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  placeholder="7061837526"
+                  className={fieldClass('phone')}
+                  aria-invalid={Boolean(errors.phone)}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
+                />
+                {errors.phone && (
+                  <p id="phone-error" className="mt-1.5 flex items-center gap-1 text-xs text-red-400">
+                    <AlertCircle size={12} /> {errors.phone}
+                  </p>
+                )}
+              </div>
+
+              <div>
                 <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/80">
                   Message
                 </label>
@@ -175,9 +222,11 @@ export default function Contact() {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell me about the role or project..."
                   className={fieldClass('message') + ' resize-none'}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
                 {errors.message && (
-                  <p className="mt-1.5 flex items-center gap-1 text-xs text-red-400">
+                  <p id="message-error" className="mt-1.5 flex items-center gap-1 text-xs text-red-400">
                     <AlertCircle size={12} /> {errors.message}
                   </p>
                 )}
@@ -189,8 +238,11 @@ export default function Contact() {
 
               {status === 'success' && (
                 <div className="flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
-                  <CheckCircle2 size={16} /> Thanks! Your message has been recorded.
+                  <CheckCircle2 size={16} /> Your email app should open with your message ready to send.
                 </div>
+              )}
+              {status === 'error' && Object.keys(errors).length > 0 && (
+                <p className="sr-only" role="alert">Please correct the highlighted fields.</p>
               )}
             </div>
           </form>

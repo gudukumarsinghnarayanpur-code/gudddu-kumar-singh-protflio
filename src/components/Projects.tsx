@@ -13,6 +13,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           alt={project.alt}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          onError={(event) => {
+            event.currentTarget.src = '/images/profile.png';
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-850 via-ink-850/30 to-transparent" />
         <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-ink-950/70 px-3 py-1 text-xs font-semibold text-electric-300 backdrop-blur">

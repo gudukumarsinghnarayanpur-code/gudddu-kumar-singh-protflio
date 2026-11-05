@@ -1,6 +1,6 @@
-Place your profile photo here as profile.jpg
+Place your profile photo here as profile.png
 
-This image is referenced from the website at /images/profile.jpg
+This image is referenced from the website at /images/profile.png
 Recommended size: 800x1000 px (portrait) or 800x800 px (square).
 
 You can also add:

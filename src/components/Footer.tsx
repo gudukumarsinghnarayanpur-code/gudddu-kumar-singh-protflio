@@ -1,6 +1,9 @@
 import { ArrowUp, Heart } from 'lucide-react';
 import { NAV_LINKS } from '@/data/content';
 
+const EMAIL = 'gudddukumarsingh62@gmail.com';
+const WHATSAPP = 'https://wa.me/917061837526';
+
 export default function Footer() {
   const go = (href: string) =>
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
@@ -33,6 +36,22 @@ export default function Footer() {
               </button>
             ))}
           </nav>
+          <div className="flex items-center gap-4">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="text-sm text-white/60 transition-colors hover:text-electric-300"
+            >
+              Email
+            </a>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/60 transition-colors hover:text-electric-300"
+            >
+              WhatsApp
+            </a>
+          </div>
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">

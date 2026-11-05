@@ -17,7 +17,7 @@ export default function Hero() {
         {/* Left — copy */}
         <div className="reveal text-center lg:text-left">
           <span className="section-eyebrow mx-auto lg:mx-0">
-            <Sparkles size={14} /> Digital Marketing Expert
+            <Sparkles size={14} /> Digital Marketing & Web Development
           </span>
 
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
@@ -26,13 +26,13 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 text-xl font-semibold text-white sm:text-2xl">
-            I Help Businesses Grow With Digital Marketing.
+            Thoughtful digital experiences. Measurable growth.
           </p>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/60 lg:mx-0">
-            A passionate digital marketing learner focused on performance marketing —
-            running structured Meta and Google Ads campaigns, measuring everything in GA4,
-            and turning data into decisions that grow businesses.
+            I'm Pramod Kumar Singh, building my skills in digital marketing and web
+            development. I combine thoughtful design, structured campaigns, and clear
+            measurement to help businesses grow.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
@@ -43,6 +43,7 @@ export default function Hero() {
               Contact Me <Send size={16} />
             </button>
           </div>
+          <p className="mt-5 text-sm text-white/50">Based in Patna, Bihar, India</p>
 
           <dl className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:max-w-lg">
             {STATS.map((s) => (
@@ -67,9 +68,8 @@ export default function Hero() {
             <div className="absolute -inset-px -z-10 rounded-[2rem] bg-gradient-to-b from-electric-600/60 to-transparent" />
 
             <div className="group relative h-[380px] w-[300px] overflow-hidden rounded-[2rem] border border-white/10 bg-ink-850 shadow-glow-lg sm:h-[460px] sm:w-[360px]">
-              {/* Replace /images/profile.jpg with your own photo at public/images/profile.jpg */}
               <img
-                src="/images/profile.jpg"
+                src="/images/profile.png"
                 alt="Pramod Kumar Singh — Digital Marketing Learner"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
